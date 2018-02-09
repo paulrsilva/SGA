@@ -26,19 +26,12 @@ class Aposta:
         #self.quant_num_apostados = len(jogo)+1
         #self.set_jogo(jogo)
 
-
-    def set_12num_6jogos(self,numeros):
-        if(not(isinstance(numeros,list) and (len(numeros)<=12))):
-            raise ValueError("Número de Números Inválido para a Aposta {}".format(numeros))
-        self.numeros_apostados=numeros
-
-    def set_jogo(self,numeros):
-        if(not(isinstance(numeros,list) and (len(numeros)<=12))):
-            raise ValueError("Número de Números Inválido para a Aposta {}".format(numeros))
-        self._numeros_apostados=numeros
-
-
     def _get_jogo(self):
         return self._numeros_apostados
 
-    jogo = property(fget=_get_jogo, fset=set_jogo)
+    def _set_jogo(self, numeros):
+        if (not (isinstance(numeros, list) and (len(numeros) <= 12))):
+            raise ValueError("Número de Números Inválido para a Aposta {}".format(numeros))
+        self._numeros_apostados = numeros
+
+    jogo = property(fget=_get_jogo, fset=_set_jogo)

@@ -9,7 +9,6 @@ __author__= "Paulino R. e Silva"
 
 import Megasena as megasena
 
-
 class Aposta:
     def __init__(self,tipoAposta,numeros_disponiveis):
         self.tipoAposta=tipoAposta #nome do jogo
@@ -20,8 +19,6 @@ class Aposta:
     def define_aposta(self, **kwargs):
         self.tipoAposta=kwargs["tipoAposta"]
         self.numeros_disponiveis=kwargs["numeros_disponiveis"]
-
-
 
 def jogo_12_6(jogo):
     jogo.a = "1 2 3 4 5 6"
@@ -39,14 +36,8 @@ def pega_variaveis_modulo_aposta(modulo_aposta):
 def main():
     aposta = Aposta(megasena.tipoAposta,megasena.numeros_disponiveis)
     book = pega_variaveis_modulo_aposta(megasena)
-
     aposta.define_aposta(**dict(zip(("tipoAposta", "numeros_disponiveis"), (megasena.tipoAposta, megasena.numeros_disponiveis))))
-
-    # print(type(book))
-    # print(vars(megasena))
-
     print(aposta.tipoAposta)
-    #print(aposta.numeros_disponiveis)
 
     #apresentando tabela formatada da megasena
     varlista=""
@@ -61,21 +52,15 @@ def main():
     #fim apresentação tabela tosca
 
     entrada_numeros=[1,2,3,4,5,6,7,8,9,10,12]
-
     novaAposta = megasena.Aposta()
-
-    novaAposta.set_jogo(entrada_numeros) # verificar pque o property em Megasena.py não está funcionando
-
+    novaAposta.jogo=entrada_numeros
     print(novaAposta.jogo)
 
-    
     #print(novaAposta.quant_num_apostados)
-
-
 
     #megasena.Aposta.set_12num_6jogos(entrada_numeros)
 
-    #print(jogo_12_6(aposta))
+
 
 
 
