@@ -1,0 +1,7 @@
+Cython==0.26.1
+kivy
+pygame
+beautifulsoup4
+lxml
+html5lib
+requests

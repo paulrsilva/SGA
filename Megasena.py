@@ -22,16 +22,18 @@ class Aposta:
     def __init__(self):
         self.tipoAposta = tipoAposta
         self.numeros_disponiveis = numeros_disponiveis #numeros disponiveis no tipo de jogo
-        self._numeros_apostados = []
+        self._jogo = 0
         #self.quant_num_apostados = len(jogo)+1
         #self.set_jogo(jogo)
 
-    def _get_jogo(self):
-        return self._numeros_apostados
+    @property
+    def jogo(self):
+        return self._jogo
 
-    def _set_jogo(self, numeros):
+    @jogo.setter
+    def jogo(self, numeros):
         if (not (isinstance(numeros, list) and (len(numeros) <= 12))):
             raise ValueError("Número de Números Inválido para a Aposta {}".format(numeros))
-        self._numeros_apostados = numeros
+        self._jogo = numeros
 
-    jogo = property(fget=_get_jogo, fset=_set_jogo)
+    # jogo = property(fget=_get_jogo, fset=_set_jogo)
