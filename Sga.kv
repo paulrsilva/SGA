@@ -1,15 +1,34 @@
 # File Name: Sga.kv
 #:kivy 1.7.0
 
-<MyButton@Button>:
-    color: .8,.9,0,1
-    font_size: 32
-    size: 150,50
+<Sga>:
+    AnchorLayout:
+        anchor_x: 'left'
+        anchor_y: 'top'
+        ToolBox:
+            id: _tool_box
+            size_hint: None,None
+            width: 100
+    AnchorLayout:
+        anchor_x: 'right'
+        anchor_y: 'top'
+        DrawingSpace:
+            size_hint:None,None
+            width:root.width - _tool_box.width
+            height: root.height - _general_options.height - _status_bar.height
+    AnchorLayout:
+        anchor_x: 'center'
+        anchor_y: 'bottom'
+        BoxLayout:
+            orientation: 'vertical'
+            GeneralOptions:
+                id: _general_options
+                size_hint: 1,None
+                height:48
+            StatusBar:
+                id: _status_bar
+                size_hint:1,None
+                height: 24
 
-<MySga>:
-    MyButton:
-        text: 'Aposta'
-        pos: root.x, root.top - self.height
-    MyButton:
-        text: 'Resultados'
-        pos: root.right - self.width, root.y
+
+

@@ -10,14 +10,22 @@ __author__= "Paulino R. e Silva"
 import kivy
 
 from kivy.app import App
-from kivy.uix.widget import Widget
+from kivy.lang import Builder
+from kivy.uix.anchorlayout import AnchorLayout
+#from kivy.uix.widget import Widget
 
-class MySga(Widget):
+Builder.load_file('toolbox.kv')
+Builder.load_file('drawingspace.kv')
+Builder.load_file('generaloptions.kv')
+Builder.load_file('statusbar.kv')
+
+class Sga(AnchorLayout):
     pass
+
 
 class SgaApp(App):
     def build(self):
-        return MySga()
+        return Sga()
 
 if __name__ =='__main__':
     SgaApp().run()
