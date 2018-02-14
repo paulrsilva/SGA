@@ -52,7 +52,7 @@ ARQUIVO_MEGA = codecs.open(INSIDE_FILENAME, 'r', "ISO-8859-1" )
 soup = BeautifulSoup(ARQUIVO_MEGA,'lxml')
 print(soup.title)
 
-# Funções de contagem e mapeamento (usando o lambda)
+# Funções de contagem e mapeamento (usando o lambda) - cria lista apostas
 tds = lambda node: [ x.text for x in node if x not in ('\n', ' ')]
 nros = [ tds(x)[2:8] for x in soup.body.table.contents[2:] if x not in ('\n', ' ')]
 
@@ -73,6 +73,36 @@ print("Os números que mais foram sorteados na Megasena:")
 print("Dez   -  nº sorteios")
 for k in usados_ordenados.keys():
     print("%02d   :    %i" %(k, usados_ordenados[k]))
+
+print('--- // ---')
+
+def curva_sino(*args):
+    soma_sino = 0
+    for arg in args:
+        soma_sino += int(arg)
+    return soma_sino
+
+n_concursos = 0
+n_acumulados = 0
+curvasDeSino = []
+for resultado in nros:
+    if len(resultado) == 6:
+        # print("%s CS: %i" %(resultado,curva_sino(*resultado)))
+        n_concursos += 1
+        curvasDeSino.append(curva_sino(*resultado))
+    else:
+        n_acumulados += 1
+print("nº de concursos: %i" % n_concursos)
+print("acumulados: %i" % n_acumulados)
+# print(curvasDeSino)
+
+maiorCurvaSino = max(curvasDeSino)
+menorCurvaSino = min(curvasDeSino)
+mediaCurvasSino = sum(curvasDeSino) / float(len(curvasDeSino))
+
+print("A maior curva de sino é: %i" % maiorCurvaSino)
+print("A menor curva de sino é: %i" % menorCurvaSino)
+print("A média de curva de sino é: %i" % mediaCurvasSino)
 
 
 
