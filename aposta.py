@@ -61,8 +61,5 @@ def main():
     #megasena.Aposta.set_12num_6jogos(entrada_numeros)
 
 
-
-
-
 if __name__ == '__main__':
     main()

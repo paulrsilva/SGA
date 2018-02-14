@@ -64,7 +64,7 @@ print(soup.td['class'])
 print(soup.td['class'][0])
 '''
 
-with open('arquivo02.html','r') as f:
+with open('d_megasc.htm','r') as f:
     soup = BeautifulSoup(f,'lxml')
 
 #print(soup.prettify())
